@@ -1,0 +1,19 @@
+name: CI
+
+on: [ "push", "pull_request" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+
+      - run: env -0 | sort -z | tr '\0' '\n'
+
+      - run: |
+          [[ -z "$ACTIONS_RUNTIME_TOKEN" ]] ||
+          [[ -z "$ACTIONS_RESULTS_URL" ]] &&
+          exit 1 || exit 0    

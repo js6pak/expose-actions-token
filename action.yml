@@ -1,0 +1,7 @@
+name: Expose actions token
+description: Exposes ACTIONS_* environment variables for use outside nodejs actions
+author: js6pak
+
+runs:
+  using: node20
+  main: ./index.mjs
